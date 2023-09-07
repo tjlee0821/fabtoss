@@ -57,4 +57,8 @@ abstract class AbstractThemeColors {
   Color get lessImportantText => AppColors.grey;
 
   Color get importantText => AppColors.white;
+
+  Color? get lessImportant => const Color.fromARGB(255, 152, 30, 30);
+
+  Color? get plus => const Color.fromARGB(255, 222, 71, 85);
 }

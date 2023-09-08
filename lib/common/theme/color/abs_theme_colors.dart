@@ -61,4 +61,8 @@ abstract class AbstractThemeColors {
   Color? get lessImportant => const Color.fromARGB(255, 152, 30, 30);
 
   Color? get plus => const Color.fromARGB(255, 222, 71, 85);
+
+  Color? get minus => const Color.fromARGB(255, 222, 71, 85);
+
+  Color get dimmedText => const Color.fromARGB(255, 222, 71, 85);
 }

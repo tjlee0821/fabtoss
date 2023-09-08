@@ -1,5 +1,6 @@
 import 'package:fast_app_base/common/common.dart';
 import 'package:fast_app_base/common/widget/w_arrow.dart';
+import 'package:fast_app_base/common/widget/w_long_button.dart';
 import 'package:fast_app_base/common/widget/w_rounded_container.dart';
 import 'package:flutter/material.dart';
 
@@ -12,18 +13,20 @@ class TodayDiscoveryFragment extends StatelessWidget {
       children: [
         getMyAccount(context),
         height20,
-        myStock,
+        getMyStock(context),
       ],
     );
   }
 
   Widget getMyAccount(BuildContext context) => Container(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         color: context.appColors.roundedLayoutBackground,
         child: Column(
           children: [
             height20,
             '계좌'.text.make(),
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 '443원'.text.size(24).bold.make(),
                 Arrow(),
@@ -36,8 +39,39 @@ class TodayDiscoveryFragment extends StatelessWidget {
                 )
               ],
             ),
+            height20,
+            Line(color: context.appColors.lessImportant),
+            const LongButton(title: '주문내역'),
+            const LongButton(title: '판매수익')
           ],
         ),
       );
-  Widget get myStock => Placeholder();
+  Widget getMyStock(BuildContext context) => Container(
+        color: context.appColors.roundedLayoutBackground,
+        child: Row(
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                '관심주식'.text.bold.make(),
+                emptyExpanded,
+                '편집하기'.text.color(context.appColors.lessImportant).make()
+              ],
+            ),
+            height20,
+            Tap(
+              onTap: () {
+                context.showSnackbar('기본');
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  '기본'.text.make(),
+                  const Arrow(direction: AxisDirection.up),
+                ],
+              ),
+            ),
+          ],
+        ),
+      );
 }

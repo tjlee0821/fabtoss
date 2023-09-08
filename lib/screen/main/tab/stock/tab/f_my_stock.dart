@@ -1,5 +1,6 @@
 import 'package:fast_app_base/common/common.dart';
 import 'package:fast_app_base/common/widget/w_rounded_container.dart';
+import 'package:fast_app_base/screen/main/tab/stock/tab/w_interest_stock_list.dart';
 // import 'package:fast_app_base/screen/main/tab/stock/tab/w_interest_stock_list.dart';
 import 'package:flutter/material.dart';
 
@@ -85,7 +86,7 @@ class MyStockFragment extends StatelessWidget {
               ),
             ],
           ).pSymmetric(h: 20),
-          // const InterestStockList(),
+          const InterestStockList(),
         ],
       ),
     );

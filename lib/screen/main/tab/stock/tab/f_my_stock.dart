@@ -86,7 +86,7 @@ class MyStockFragment extends StatelessWidget {
               ),
             ],
           ).pSymmetric(h: 20),
-          const InterestStockList(),
+          // const InterestStockList(),
         ],
       ),
     );

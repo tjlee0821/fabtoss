@@ -9,6 +9,4 @@ class Stock extends PopularStock {
     required super.currentPrice,
     required this.stockImagePath,
   });
-
-  get todayPercentageString => null;
 }

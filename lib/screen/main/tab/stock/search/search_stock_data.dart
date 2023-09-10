@@ -8,7 +8,7 @@ import '../vo/vo_simple_stock.dart';
 class StockSearchData extends GetxController {
   List<SimpleStock> stocks = [];
   RxList<String> searchHistoryList = <String>[].obs;
-  RxList<SimpleStock> searchResult = <SimpleStock>[].obs;
+  RxList<SimpleStock> autoCompleteList = <SimpleStock>[].obs;
 
   @override
   void onInit() {
@@ -19,12 +19,18 @@ class StockSearchData extends GetxController {
     super.onInit();
   }
 
+  Future<void> loadLocalStockJosn() async {
+    final jsonList =
+        await LocalJson.getObjectList<SimpleStock>("stock_list.json");
+    stocks.addAll(jsonList);
+  }
+
   void search(String text) {
     if (isBlank(text)) {
-      searchResult.clear();
+      autoCompleteList.clear();
       return;
     }
-    searchResult.value =
+    autoCompleteList.value =
         stocks.where((element) => element.stockName.contains(text)).toList();
   }
 

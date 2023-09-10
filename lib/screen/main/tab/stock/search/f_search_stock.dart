@@ -16,13 +16,12 @@ class _SearchStockFragmentState extends State<SearchStockFragment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: StockSearchAppBar(controller: controller),
-      body: ListView(
-        children: [
-          SearchHistoryStockList(),
-          PopularSearchStockList(),
-        ],
-      ),
-    );
+        appBar: StockSearchAppBar(controller: controller),
+        body: ListView(
+          children: [
+            SearchHistoryStockList(),
+            PopularSearchStockList(),
+          ],
+        ));
   }
 }

@@ -1,5 +1,5 @@
 import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/screen/main/tab/stock/search/stock_search_data.dart';
+import 'package:fast_app_base/screen/main/tab/stock/search/search_stock_data.dart';
 import 'package:fast_app_base/screen/main/tab/stock/search/w_popular_search_list.dart';
 import 'package:fast_app_base/screen/main/tab/stock/search/w_search_bar.dart';
 import 'package:fast_app_base/screen/main/tab/stock/search/w_search_history_list.dart';
@@ -16,7 +16,7 @@ class StockSearchScreen extends StatefulWidget {
 }
 
 class _StockSearchScreenState extends State<StockSearchScreen> {
-  final TextEditingController _controller = TextEditingController();
+  final _controller = TextEditingController();
   late final searchData = Get.find<StockSearchData>();
 
   @override
@@ -32,7 +32,7 @@ class _StockSearchScreenState extends State<StockSearchScreen> {
 
   @override
   void dispose() {
-    searchData.searchResult.clear();
+    searchData.autoCompleteList.clear();
     super.dispose();
   }
 
@@ -41,7 +41,7 @@ class _StockSearchScreenState extends State<StockSearchScreen> {
     return Scaffold(
       appBar: SearchBarWidget(controller: _controller),
       body: Obx(
-        () => searchData.searchResult.isEmpty
+        () => searchData.autoCompleteList.isEmpty
             ? ListView(
                 children: const [
                   SearchHistoryStockList(),
@@ -49,9 +49,9 @@ class _StockSearchScreenState extends State<StockSearchScreen> {
                 ],
               )
             : ListView.builder(
-                itemCount: searchData.searchResult.length,
+                itemCount: searchData.autoCompleteList.length,
                 itemBuilder: (BuildContext context, int index) {
-                  final element = searchData.searchResult[index];
+                  final element = searchData.autoCompleteList[index];
                   return Tap(
                     onTap: () {
                       Nav.push(StockDetail(stockName: element.stockName));

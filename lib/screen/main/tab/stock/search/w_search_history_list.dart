@@ -1,4 +1,4 @@
-import 'package:fast_app_base/screen/main/tab/stock/search/stock_search_data.dart';
+import 'package:fast_app_base/screen/main/tab/stock/search/search_stock_data.dart';
 import 'package:fast_app_base/screen/main/tab/stock/search/w_search_history_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

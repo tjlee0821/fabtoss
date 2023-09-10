@@ -7,7 +7,7 @@ class Stock extends PopularStock {
   final String stockImagePath;
 
   Stock({
-    required super.name,
+    required super.stockName,
     required super.yesterdayClosePrice,
     required super.currentPrice,
     required this.stockImagePath,

@@ -17,7 +17,7 @@ class StockItem extends StatelessWidget {
           width10,
           Image.asset(stock.stockImagePath, width: 50),
           width20,
-          (stock.name)
+          (stock.stockName)
               .text
               .size(18)
               .bold

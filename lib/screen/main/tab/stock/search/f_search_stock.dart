@@ -1,5 +1,5 @@
-import 'package:fast_app_base/screen/main/tab/stock/search/w_popular_search_stock_list.dart';
-import 'package:fast_app_base/screen/main/tab/stock/search/w_serach_history_stock_list.dart';
+import 'package:fast_app_base/screen/main/tab/stock/search/w_popular_search_list.dart';
+import 'package:fast_app_base/screen/main/tab/stock/search/w_search_history_list.dart';
 import 'package:fast_app_base/screen/main/tab/stock/search/w_stock_search_app_bar.dart';
 import 'package:flutter/material.dart';
 

@@ -28,7 +28,7 @@ class _PopularSearchStockListState extends State<PopularSearchStockList> {
                   children: [
                     (index + 1).text.bold.white.size(16).make(),
                     width20,
-                    element.stockName.text.bold.white.size(16).make(),
+                    element.name.text.bold.white.size(16).make(),
                     emptyExpanded,
                     element.todayPercentageString.text
                         .color(element.getTodayPercentageColor(context))

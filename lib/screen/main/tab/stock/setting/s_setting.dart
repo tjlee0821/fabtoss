@@ -17,14 +17,6 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
-  bool isPushOn = false;
-
-  @override
-  void initState() {
-    isPushOn = Prefs.isPushOn.get();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,8 +26,9 @@ class _SettingScreenState extends State<SettingScreen> {
       body: ListView(
         children: [
           Obx(
-            () => SwitchMenu('푸시 설정', Prefs.isPushOn.get(), onTap: (isOn) {
-              Prefs.isPushOn.set(isOn);
+            () =>
+                SwitchMenu('푸시 설정', Prefs.isPushOnRx.get(), onChanged: (isOn) {
+              Prefs.isPushOnRx.set(isOn);
             }),
           ),
           Obx(() => Slider(

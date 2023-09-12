@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TtospayFragment extends StatefulWidget {
-  const TtospayFragment({super.key});
+  const TtospayFragment({Key? key}) : super(key: key);
 
   @override
   State<TtospayFragment> createState() => _TtospayFragmentState();

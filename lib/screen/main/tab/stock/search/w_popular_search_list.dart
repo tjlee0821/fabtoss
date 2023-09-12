@@ -1,16 +1,18 @@
+import 'package:animations/animations.dart';
 import 'package:fast_app_base/common/common.dart';
 import 'package:fast_app_base/common/dart/extension/datetime_extension.dart';
 import 'package:fast_app_base/screen/main/tab/stock/search/dummy_popular_stocks.dart';
+import 'package:fast_app_base/screen/main/tab/stock/search/s_stock_detail.dart';
 import 'package:flutter/material.dart';
 
-class PopularSearchStockList extends StatefulWidget {
-  const PopularSearchStockList({Key? key}) : super(key: key);
+class PopularSearchList extends StatefulWidget {
+  const PopularSearchList({Key? key}) : super(key: key);
 
   @override
-  State<PopularSearchStockList> createState() => _PopularSearchStockListState();
+  State<PopularSearchList> createState() => _PopularSearchListState();
 }
 
-class _PopularSearchStockListState extends State<PopularSearchStockList> {
+class _PopularSearchListState extends State<PopularSearchList> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,20 +26,28 @@ class _PopularSearchStockListState extends State<PopularSearchStockList> {
         ).pSymmetric(h: 20, v: 15),
         height20,
         ...popularStocks
-            .mapIndexed((element, index) => Row(
-                  children: [
-                    (index + 1).text.bold.white.size(16).make(),
-                    width20,
-                    element.name.text.bold.white.size(16).make(),
-                    emptyExpanded,
-                    element.todayPercentageString.text
-                        .color(element.getTodayPercentageColor(context))
-                        .size(16)
-                        .make(),
-                  ],
-                ).pSymmetric(h: 20, v: 20))
+            .mapIndexed((e, index) => OpenContainer<bool>(
+                  closedColor: Colors.transparent,
+                  openColor: Colors.transparent,
+                  transitionType: ContainerTransitionType.fade,
+                  openBuilder: (context, closeFunction) => StockDetail(stockName: e.name),
+                  closedBuilder: (context, openFunction) {
+                    return Row(
+                      children: [
+                        (index + 1).text.bold.white.size(16).make(),
+                        width20,
+                        e.name.text.bold.white.size(16).make(),
+                        emptyExpanded,
+                        e.todayPercentageString.text
+                            .color(e.getTodayPercentageColor(context))
+                            .size(16)
+                            .make(),
+                      ],
+                    ).pSymmetric(h: 20, v: 20);
+                  },
+                ))
             .toList()
       ],
-    ).pSymmetric(h: 20);
+    );
   }
 }

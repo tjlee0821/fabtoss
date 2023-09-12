@@ -1,4 +1,3 @@
-import 'package:fast_app_base/common/common.dart';
 import 'package:fast_app_base/screen/notification/vo/vo_notification.dart';
 import 'package:fast_app_base/screen/notification/w_notification_item.dart';
 import 'package:flutter/material.dart';
@@ -6,16 +5,13 @@ import 'package:nav/dialog/dialog.dart';
 import 'package:nav/enum/enum_nav_ani.dart';
 
 class NotificationDialog extends DialogWidget {
-  final List<TtosNotification> notifications;
+  final List<TtossNotification> notifications;
 
-  NotificationDialog(
-    this.notifications, {
-    super.key,
-    super.animation = NavAni.Bottom,
-  });
+  NotificationDialog(this.notifications,
+      {super.key, super.animation = NavAni.Bottom, super.barrierDismissible = false});
 
   @override
-  State<NotificationDialog> createState() => _NotificationDialogState();
+  DialogState<NotificationDialog> createState() => _NotificationDialogState();
 }
 
 class _NotificationDialogState extends DialogState<NotificationDialog> {
@@ -24,17 +20,15 @@ class _NotificationDialogState extends DialogState<NotificationDialog> {
     return Material(
       type: MaterialType.transparency,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
           ...widget.notifications
-              .map(
-                (e) => NotificationItemWidget(
-                    onTap: () {
-                      widget.hide();
-                    },
-                    notification: e),
-              )
-              .toList(),
+              .map((element) => NotificationItemWidget(
+                  onTap: () {
+                    widget.hide();
+                  },
+                  notification: element))
+              .toList()
         ],
       ),
     );

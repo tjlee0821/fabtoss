@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AllFragment extends StatefulWidget {
-  const AllFragment({super.key});
+  const AllFragment({Key? key}) : super(key: key);
 
   @override
   State<AllFragment> createState() => _AllFragmentState();

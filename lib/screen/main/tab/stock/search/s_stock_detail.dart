@@ -1,10 +1,10 @@
 import 'package:fast_app_base/common/common.dart';
 import 'package:flutter/material.dart';
 
-class StockDetailScreen extends StatelessWidget {
+class StockDetail extends StatelessWidget {
   final String stockName;
 
-  const StockDetailScreen({
+  const StockDetail({
     required this.stockName,
     Key? key,
   }) : super(key: key);

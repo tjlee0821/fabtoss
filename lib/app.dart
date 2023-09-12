@@ -34,13 +34,14 @@ class AppState extends State<App> with Nav, WidgetsBindingObserver {
     return CustomThemeApp(
       child: Builder(builder: (context) {
         return MaterialApp(
+          debugShowCheckedModeBanner: false,
           navigatorKey: App.navigatorKey,
           localizationsDelegates: context.localizationDelegates,
           supportedLocales: context.supportedLocales,
           locale: context.locale,
           title: 'Image Finder',
           theme: context.themeType.themeData,
-          home: MainScreen(),
+          home: const MainScreen(),
         );
       }),
     );
@@ -51,8 +52,6 @@ class AppState extends State<App> with Nav, WidgetsBindingObserver {
     switch (state) {
       case AppLifecycleState.resumed:
         App.isForeground = true;
-        break;
-      case AppLifecycleState.hidden:
         break;
       case AppLifecycleState.inactive:
         break;

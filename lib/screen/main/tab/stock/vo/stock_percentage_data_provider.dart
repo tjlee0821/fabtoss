@@ -8,11 +8,9 @@ abstract mixin class StockPercentageDataProvider {
   int get yesterdayClosePrice;
 
   double get todayPercentage =>
-      ((currentPrice - yesterdayClosePrice) / yesterdayClosePrice * 100)
-          .toPrecision(2);
+      ((currentPrice - yesterdayClosePrice) / yesterdayClosePrice * 100).toPrecision(2);
 
-  String get todayPercentageString =>
-      _isPlus ? '+$todayPercentage%' : '$todayPercentage%';
+  String get todayPercentageString => _isPlus ? '+$todayPercentage%' : '$todayPercentage%';
 
   bool get _isPlus => currentPrice > yesterdayClosePrice;
 

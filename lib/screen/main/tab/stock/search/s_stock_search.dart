@@ -1,9 +1,8 @@
 import 'package:fast_app_base/common/common.dart';
-import 'package:fast_app_base/screen/main/tab/stock/search/search_stock_data.dart';
+import 'package:fast_app_base/screen/main/tab/stock/search/stock_search_data.dart';
 import 'package:fast_app_base/screen/main/tab/stock/search/w_popular_search_list.dart';
-import 'package:fast_app_base/screen/main/tab/stock/search/w_search_auto_complete_list.dart';
 import 'package:fast_app_base/screen/main/tab/stock/search/w_search_bar.dart';
-import 'package:fast_app_base/screen/main/tab/stock/search/w_search_history_stock_list.dart';
+import 'package:fast_app_base/screen/main/tab/stock/search/w_search_history_list.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,9 +15,9 @@ class StockSearchScreen extends StatefulWidget {
   State<StockSearchScreen> createState() => _StockSearchScreenState();
 }
 
-class _StockSearchScreenState extends State<StockSearchScreen>
-    with SearchStockDataProvider {
-  final _controller = TextEditingController();
+class _StockSearchScreenState extends State<StockSearchScreen> {
+  final TextEditingController _controller = TextEditingController();
+  late final searchData = Get.find<StockSearchData>();
 
   @override
   void initState() {
@@ -33,7 +32,7 @@ class _StockSearchScreenState extends State<StockSearchScreen>
 
   @override
   void dispose() {
-    searchData.autoCompleteList.clear();
+    searchData.searchResult.clear();
     super.dispose();
   }
 
@@ -42,21 +41,21 @@ class _StockSearchScreenState extends State<StockSearchScreen>
     return Scaffold(
       appBar: SearchBarWidget(controller: _controller),
       body: Obx(
-        () => searchData.autoCompleteList.isEmpty
+        () => searchData.searchResult.isEmpty
             ? ListView(
                 children: const [
-                  SearchHistoryStockList(),
-                  PopularSearchStockList(),
+                  SearchHistoryList(),
+                  PopularSearchList(),
                 ],
               )
             : ListView.builder(
-                itemCount: searchData.autoCompleteList.length,
+                itemCount: searchData.searchResult.length,
                 itemBuilder: (BuildContext context, int index) {
-                  final element = searchData.autoCompleteList[index];
+                  final element = searchData.searchResult[index];
                   return Tap(
                     onTap: () {
-                      Nav.push(StockDetailScreen(stockName: element.name));
-                      searchData.addHistory(element);
+                      Nav.push(StockDetail(stockName: element.name));
+                      searchData.addSearchHistory(element.name);
                       _controller.clear();
                     },
                     child: Container(

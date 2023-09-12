@@ -22,13 +22,12 @@ class ImageButton extends StatelessWidget {
     return Padding(
       padding: padding,
       child: Tap(
-        onTap: onTap,
-        child: Image.asset(
-          imagePath,
-          height: 26,
-          width: 26,
-        ),
-      ),
+          onTap: onTap,
+          child: Image.asset(
+            imagePath,
+            height: height,
+            width: width,
+          )),
     );
   }
 }
